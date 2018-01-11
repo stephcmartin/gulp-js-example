@@ -18,9 +18,7 @@ gulp.task('message', function(){
     return console.log('Gulp is running...')
 });
 
-gulp.task('default', function(){
-    return console.log('Gulp is running...')
-});
+gulp.task('default',['message', 'copyHTML', 'imagemin', 'minify', 'sass']);
 
 // Copy all HTML files and creates it own dist folder for publishing
 
