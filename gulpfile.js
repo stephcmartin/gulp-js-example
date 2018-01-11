@@ -2,6 +2,7 @@ const gulp = require ('gulp')
 const imagemin = require ('gulp-imagemin')
 const uglify = require('gulp-uglify')
 const sass = require('gulp-sass')
+const concat = require('gulp-concat')
 
 /*
  GULP TOP LEVEL FUNCTIONS:
@@ -18,7 +19,7 @@ gulp.task('message', function(){
     return console.log('Gulp is running...')
 });
 
-gulp.task('default',['message', 'copyHTML', 'imagemin', 'minify', 'sass']);
+gulp.task('default',['message', 'copyHTML', 'imagemin', 'sass', 'scripts']);
 
 // Copy all HTML files and creates it own dist folder for publishing
 
@@ -36,11 +37,11 @@ gulp.task('imagemin', () =>
 
 // Minify JS
 
-gulp.task('minify', function(){
-    gulp.src('src/js/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-})
+// gulp.task('minify', function(){
+//     gulp.src('src/js/*.js')
+//     .pipe(uglify())
+//     .pipe(gulp.dest('dist/js'))
+// })
 
 // Compile SASS
 
@@ -53,3 +54,12 @@ gulp.task('sass', function(){
 gulp.task('sass:watch', function () {
     gulp.watch('./sass/**/*.scss', ['sass']);
   });
+
+  // Compile all js files into one file called 'main.js'
+
+  gulp.task('scripts', function(){
+      gulp.src('src/js/*.js')
+      .pipe(concat('main.js'))
+      .pipe(uglify())
+      .pipe(gulp.dest('dist/js'))
+  })

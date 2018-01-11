@@ -1,0 +1,1 @@
+console.log("This Is File 1"),console.log("This Is File 2"),console.log("This is Another JS file called file 2"),alert("This is Another JS file called file 2");
