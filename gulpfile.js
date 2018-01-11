@@ -63,3 +63,12 @@ gulp.task('sass:watch', function () {
       .pipe(uglify())
       .pipe(gulp.dest('dist/js'))
   })
+
+  // Add Watcher - the params are: 'location' and 'name of task'
+
+  gulp.task('watch', function(){
+      gulp.watch('src/js/*.js', ['scripts'])
+      gulp.watch('src/images/*.', ['imageMin'])
+      gulp.watch('src/sass/*.scss', ['sass'])
+      gulp.watch('src/*.html', ['copyHTML'])
+  })
